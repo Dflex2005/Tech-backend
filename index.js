@@ -9,6 +9,8 @@ const jobRoute = require("./routes/jobs");
 const multer = require("multer");
 const path = require("path")
 
+const PORT = process.env.PORT || 5000;
+
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     next();
@@ -50,7 +52,7 @@ app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/jobs", jobRoute);
 
-app.listen(process.env.PORT, ()=>{
+app.listen(PORT, ()=>{
     console.log("server running");
 })
 
