@@ -9,7 +9,9 @@ const jobRoute = require("./routes/jobs");
 const multer = require("multer");
 const path = require("path")
 const cors = require("cors");
+const bodyParser = require('body-parser');
 
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors())
 
 const PORT = process.env.PORT || 5000;
@@ -29,8 +31,8 @@ app.use(express.json());
 app.use("/images", express.static(path.join(__dirname, "/images")))
 
 mongoose.connect(process.env.MONGO_LINK, {
-    // useserNewUrlParser: true,
-    // useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
 
 }).then(console.log("connected")).catch(err => console.log(err));
 
