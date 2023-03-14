@@ -21,7 +21,7 @@ router.put("/:id", async(req, res)=>{
             res.status(500).json(err)
         }
     }else{
-        res.status(401).json("you can only update your acct ")
+        res.status(401).json("you can only update your account")
     }
    
 })
