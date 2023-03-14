@@ -52,7 +52,7 @@ router.delete("/:id", async(req, res)=>{
                 res.status(500).json(err)
             }
         }else{
-            res.status(401).json("cant del this post") 
+            res.status(401).json("can't del this post") 
         }
 
     }catch(err){
