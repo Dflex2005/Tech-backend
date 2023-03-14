@@ -8,6 +8,9 @@ const postRoute = require("./routes/posts");
 const jobRoute = require("./routes/jobs");
 const multer = require("multer");
 const path = require("path")
+const cors = require("cors");
+
+app.use(cors())
 
 const PORT = process.env.PORT || 5000;
 
