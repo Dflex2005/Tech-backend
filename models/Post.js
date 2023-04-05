@@ -14,14 +14,19 @@ const PostSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
-    photo:{
-        type:String,
-        required:false,
-    },
     username:{
         type:String,
         required:true,
+    }, 
+    name:{
+        type:String,
     },
+    avatar:{
+        type:String,
+    },
+    cloudinary_id:{
+        type:String,
+    }
 },
  {timestamps:true}
  );

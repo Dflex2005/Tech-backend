@@ -28,29 +28,44 @@ db.on('error', console.error.bind(console, 'connection error:'));
 
 dotenv.config();
 app.use(express.json());
-app.use("/images", express.static(path.join(__dirname, "/images")))
+// app.use("/images", express.static(path.join(__dirname, "/images")))
 
+
+//mongoose connection
 mongoose.connect(process.env.MONGO_LINK, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    // useFindAndModify:false,
+    // useCreateIndex:true,
+
 
 }).then(console.log("connected")).catch(err => console.log(err));
 
-const storage = multer.diskStorage({
-    destination:(req, res, cb)=>{
-        cb(null, "images")
-    }, filename:(req,file, cb)=>{
-        cb(null, req.body.name)
-    }
-})
+
+// multer storage
+// const storage = multer.diskStorage({
+//     destination:(req, res, cb)=>{
+//         cb(null, "images")
+//     }, filename:(req,file, cb)=>{
+//         cb(null, req.body.name)
+//     },
+//     fileFilter:(req, file, cb) =>{
+//         let ext = path.extname(file.originalname);
+//         if(ext !== ".jpg" && ext !== ".jpeg" && ext !== ".png"){
+//             cb(new Error("file not supported"), false);
+//             return;
+//         }
+//         cb(null, true);
+//     }
+// })
 
 
 
 //upload images
-const upload = multer({storage:storage});
-app.post("/api/upload", upload.single("file"), (req, res)=>{
-    res.status(200).json("file uploaded")
-})
+// const upload = multer({storage:storage});
+// app.post("/api/upload", upload.single("file"), (req, res)=>{
+//     res.status(200).json("file uploaded")
+// })
 
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
